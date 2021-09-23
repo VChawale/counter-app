@@ -18,13 +18,36 @@ class Counter extends React.Component {
     );
   }
 
+  hanldeIncrementClick = () => {
+    console.log("Increment button clicked", this);
+  };
+
   render() {
     return (
       <div>
-        {this.state.tags.length === 0 && "Please enter a new tag"}
-        {this.renderTags()}
+        <span className={this.getBadgeClasses()}>{this.formatCount()}</span>
+        <button
+          onClick={this.hanldeIncrementClick}
+          className="btn btn-secondary btn-sm"
+        >
+          Incement
+        </button>
+        {/* {this.state.tags.length === 0 && "Please enter a new tag"}
+        {this.renderTags()} */}
       </div>
     );
+  }
+
+  getBadgeClasses() {
+    let classes = "badge m-2 badge-";
+    classes += this.state.count === 0 ? "warning" : "primary";
+    return classes;
+  }
+
+  formatCount() {
+    const { count } = this.state;
+
+    return count === 0 ? "Zero" : count;
   }
 }
 
