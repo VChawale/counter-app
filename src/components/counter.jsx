@@ -18,8 +18,9 @@ class Counter extends React.Component {
     );
   }
 
-  hanldeIncrementClick = () => {
-    console.log("Increment button clicked", this);
+  hanldeIncrementClick = (product) => {
+    console.log(product);
+    this.setState({ count: this.state.count + 1 });
   };
 
   render() {
@@ -27,7 +28,7 @@ class Counter extends React.Component {
       <div>
         <span className={this.getBadgeClasses()}>{this.formatCount()}</span>
         <button
-          onClick={this.hanldeIncrementClick}
+          onClick={() => this.hanldeIncrementClick({ id: 1 })}
           className="btn btn-secondary btn-sm"
         >
           Incement
